@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:c="http://www.springframework.org/schema/c"
+        xmlns:util="http://www.springframework.org/schema/util"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="helloWorld" class="com.privalia.presentation.HelloWorld">
+        <property name="hello" value="Hola Mundo!"></property>
+    </bean>
+
+    <bean id="helloWorldCons" class="com.privalia.presentation.HelloWorld">
+        <constructor-arg index="0" value="Hola Mundo From Constructor" type="java.lang.String"></constructor-arg>
+    </bean>
+
+    <bean id="builder" class="com.privalia.builderexample.Employee$EmployeeBuilder">
+        <constructor-arg value="1"/>
+        <constructor-arg value="Shamik Mirtra"/>
+        <property name="gender" value="1"/>
+        <property name="hobby" value="Blogging"/>
+    </bean>
+    <bean id="employee" class="com.privalia.builderexample.Employee" factory-bean="builder" factory-method="build"/>
+
+    <bean id="plus" class="com.privalia.calculator.operations.Plus"/>
+    <bean id="multiply" class="com.privalia.calculator.operations.Multiply"/>
+    <bean id="substract" class="com.privalia.calculator.operations.Substract"/>
+    <bean id="division" class="com.privalia.calculator.operations.Division"/>
+</beans>
