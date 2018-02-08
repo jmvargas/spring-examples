@@ -51,6 +51,48 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <id>
+                            execution-1
+                        </id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                com.privalia.entity.annotations.Principal
+                            </mainClass>
+                            <arguments>
+                                <argument>1</argument>
+                                <argument>2</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>
+                            execution-2
+                        </id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                com.privalia.entity.Principal
+                            </mainClass>
+                            <arguments>
+                                <argument>111</argument>
+                                <argument>222</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
 
     </build>
