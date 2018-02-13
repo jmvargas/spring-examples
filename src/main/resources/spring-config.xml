@@ -11,7 +11,17 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/util
-        http://www.springframework.org/schema/util/spring-util.xsd">
+        http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd" >
+
+    <context:property-placeholder location="file:/home/jvargas/workspace/PrivaliaSpringProject/system.properties,classpath:config.properties" ignore-unresolvable="true" />
+
+    <bean id="database" class="com.privalia.external.configuration.Database">
+        <property name="url" value="${database.url}"/>
+        <property name="username" value="${database.username}"/>
+        <property name="password" value="${database.password}"/>
+    </bean>
 
     <bean id="helloWorld" class="com.privalia.presentation.HelloWorld">
         <property name="hello" value="Hola Mundo!"></property>
@@ -88,4 +98,17 @@
             </list>
         </property>
     </bean>
+
+    <bean id="compra" class="com.privalia.aspectos.Compra"/>
+    <bean id="validarMaterial" class="com.privalia.aspectos.ValidarMaterial"/>
+    
+    <aop:config>
+        <aop:aspect ref="validarMaterial">
+            <aop:pointcut id="compraPointCut" expression="execution( * com.privalia.aspectos.Compra.compra(..) )"/>
+            <aop:before method="comprobarCantidad" pointcut-ref="compraPointCut"/>
+            <aop:after-returning method="empaquetar" pointcut-ref="compraPointCut"/>
+            <aop:after-throwing method="ponerReclamacion" pointcut-ref="compraPointCut"/>
+        </aop:aspect>
+    </aop:config>
+
 </beans>
