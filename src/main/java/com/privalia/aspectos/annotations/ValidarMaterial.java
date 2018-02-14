@@ -9,7 +9,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
 
 @Configuration
-@EnableAspectJAutoProxy(proxyTargetClass=true)
+@EnableAspectJAutoProxy
 @Aspect
 public class ValidarMaterial {
     @Before("execution(* com.privalia.aspectos.annotations.Compra.compra(..))")
