@@ -2,6 +2,7 @@ package com.privalia.aspectos.annotations;
 
 import lombok.Cleanup;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 public class Principal {
     public static void main(String[] args){
